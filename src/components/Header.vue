@@ -2,7 +2,7 @@
   <div class="header__container">
       <div class="flex justify-between text-left menu">
         <div class="text-left">
-          <img :src="FindJobs" alt="logo" />
+          <img src="/assets/findJobs.png" alt="logo" />
           <p>for employers</p>
         </div>
         <div class="flex justify-end items-center" v-if="!hideSearchBar">
@@ -47,7 +47,6 @@
 
 <script setup>
 import { ref, defineProps,  } from 'vue'
-import FindJobs from '../assets/findJobs.png'
 
   defineProps({
     hideSearchBar: Boolean

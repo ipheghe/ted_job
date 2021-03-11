@@ -1,11 +1,11 @@
 <template>
   <div class="login__container" >
       <div class=" flex justify-start items-center login__banner">
-          <img class="find-jobs" src="../assets/findJobs.png" />
+          <img class="find-jobs" src="/assets/findJobs.png" />
           <p class="for-employers">for employers</p>
           <div>
             <h1 class="text-left">Find the best candidates for your organisation.</h1>
-            <img :src="FindJobs" alt="banner" />
+            <img src="" alt="banner" />
           </div>
       </div>
       <div class=" flex justify-end items-center login__form">
@@ -41,7 +41,6 @@
 <script>
 import { ref, getCurrentInstance } from 'vue'
 import { useStore } from 'vuex'
-import FindJobs from '../assets/findJobs.png'
 
 export default {
   setup() {
@@ -83,8 +82,7 @@ export default {
       email,
       password,
       onSubmit,
-      isAuthenticated,
-      FindJobs
+      isAuthenticated
     }
   }
 }
