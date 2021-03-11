@@ -2,7 +2,7 @@
   <div class="footer__container grid grid-cols-2 gap-4">
     <div class="links-content flex justify-between items-start">
         <div class="text-left">
-          <img src="../assets/FindJobs.png" alt="logo" />
+          <img src="../assets/findJobs.png" alt="logo" />
           <p>© 2021 <span>FindJobs</span></p>
         </div>
       <div class="flex flex-col text-left">

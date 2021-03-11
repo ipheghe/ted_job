@@ -2,7 +2,7 @@
   <div class="header__container">
       <div class="flex justify-between text-left menu">
         <div class="text-left">
-          <img src="../assets/FindJobs.png" alt="logo" />
+          <img src="../assets/findJobs.png" alt="logo" />
           <p>for employers</p>
         </div>
         <div class="flex justify-end items-center" v-if="!hideSearchBar">
