@@ -9,7 +9,7 @@
           <a>Jobs</a>
           <a>Company Review</a>
           <a>Find Salaries</a>
-          <button class="post-job" @click="$router.push({ name: 'Jobs' })">Post Job</button>
+          <button class="post-job" @click=" $emit('handleNavigation')">Post Job</button>
         </div>
         <button type="button" class="post-job logout" v-if="hideSearchBar" @click="(event) => $emit('logout', event)">Logout</button>
       </div>
@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps,  } from 'vue'
+import { ref, defineProps } from 'vue'
 
   defineProps({
     hideSearchBar: Boolean

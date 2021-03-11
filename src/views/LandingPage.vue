@@ -1,6 +1,6 @@
 <template>
   <div class="jobs__container">
-      <Header @handleClick="handleSearch" />
+      <Header @handleClick="handleSearch"  @handleNavigation="handleNavigation" />
       <GuestBody @handleClick="toggleForm" />
       <ApplicationForm  v-if="isOpen" @handleSubmit="handleSubmit" :selected="selectedData" @closeModal="closeModal" />
       <Footer />
@@ -11,6 +11,7 @@
 <script>
 import { ref, onMounted, getCurrentInstance } from 'vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import Footer from '../components/Footer.vue'
 import Header from '../components/Header.vue'
 import GuestBody from '../components/GuestBody.vue'
@@ -18,8 +19,9 @@ import ApplicationForm from '../components/ApplicationForm.vue'
 
 export default {
   setup() {
-    const $toast = getCurrentInstance().ctx.$toast
-    const $router = getCurrentInstance().ctx.$router
+    const { proxy } = getCurrentInstance()
+    const $toast = proxy.$toast
+    const $router = useRouter()
 
     const store = useStore()
     function showToast (message, type) {
@@ -80,6 +82,10 @@ export default {
         isOpen.value =  false
     }
 
+    function handleNavigation () {
+       $router.push({ name: 'Jobs' })
+    }
+
     return {
       Footer,
       Header,
@@ -91,7 +97,8 @@ export default {
       selectedData,
       showToast,
       handleSearch,
-      closeModal
+      closeModal,
+      handleNavigation
     }
   },
   methods() {

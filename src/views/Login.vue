@@ -5,7 +5,7 @@
           <p class="for-employers">for employers</p>
           <div>
             <h1 class="text-left">Find the best candidates for your organisation.</h1>
-            <img src="" alt="banner" />
+            <img src="/assets/banner.png" alt="banner" />
           </div>
       </div>
       <div class=" flex justify-end items-center login__form">
@@ -41,16 +41,18 @@
 <script>
 import { ref, getCurrentInstance } from 'vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
 export default {
   setup() {
     const store = useStore()
+    const $router = useRouter()
     const email = ref('')
     const password = ref('')
     const isAuthenticated = localStorage.getItem('token')
 
-    const $toast = getCurrentInstance().ctx.$toast
-    const $router = getCurrentInstance().ctx.$router
+    const { proxy } = getCurrentInstance()
+    const $toast = proxy.$toast
 
     if (isAuthenticated) {
       $router.push({ name: 'Jobs' })
@@ -59,6 +61,7 @@ export default {
         if (type === 'success') {
             $toast.success(message)
             $router.push({ name: 'Jobs' })
+            console.log('yesssssssss')
         }
 
         if (type === 'error') {

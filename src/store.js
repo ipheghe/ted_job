@@ -3,13 +3,14 @@ import Axios from 'axios';
 import 'es6-promise/auto';
 
 let axios = Axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? 'https://api.jobboard.tedbree.com/' : ''
+  baseURL: process.env.NODE_ENV === 'production' ? 'https://api.jobboard.tedbree.com/' : '',
+  crossdomain: true
 });
 const getHeaders = (token="") => {
   return {
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     }
   }
 }
@@ -110,7 +111,7 @@ const store = createStore({
      */
       getPostedJobs: async({ state, commit }) => {
         try {
-          let response = await axios.get(`${state.apiUrl}/my/jobs`, getHeaders(state.token || localStorage.getItem('token')));
+          let response = await axios.get(`${state.apiUrl}/my/jobs`);
           commit('setPostedJobData', response.data);
         } catch (error) {
           throw new Error(error)

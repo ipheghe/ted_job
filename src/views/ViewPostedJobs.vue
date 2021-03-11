@@ -121,6 +121,7 @@
 <script>
 import { ref, onMounted, computed, getCurrentInstance } from "vue";
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import Footer from '../components/Footer.vue'
 import Header from '../components/Header.vue'
 
@@ -128,8 +129,9 @@ export default {
   setup() {
     const store = useStore()
     const modalIsOpen = ref(false);
-    const $toast = getCurrentInstance().ctx.$toast
-    const $router = getCurrentInstance().ctx.$router
+    const { proxy } = getCurrentInstance()
+    const $toast = proxy.$toast
+    const $router = useRouter()
     const isAuthenticated = localStorage.getItem('token')
     if (!isAuthenticated) {
       $router.push({ name: 'Login' })
@@ -366,7 +368,7 @@ button:hover {
   padding: 100px 50px;
   min-width: 320px;
   margin: 0 auto;
-  min-height: 500px;
+  min-height: 550px;
 }
 
 @media (max-width: 768px) {
@@ -375,6 +377,12 @@ button:hover {
   }
 }
 
+
+@media (max-height: 900px) {
+  .container {
+    min-height: 500px;
+  }
+}
 /** Search */
 .search__create {
   display: flex;
