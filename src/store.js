@@ -3,13 +3,8 @@ import Axios from 'axios';
 import 'es6-promise/auto';
 
 let axios = Axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? 'https://api.jobboard.tedbree.com/' : '',
-  headers: {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
-  }
+  baseURL: process.env.NODE_ENV === 'production' ? 'https://api.jobboard.tedbree.com/' : ''
 });
-
 const getHeaders = (token="") => {
   return {
     headers: {

@@ -11,7 +11,6 @@ export default defineConfig({
         changeOrigin: true,
         ws: true
       },
-    },
-    cors: false
+    }
   }
 })
